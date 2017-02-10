@@ -1,0 +1,183 @@
+% Copyright 2017 by Fabricio Silva and Paulo Silva - LRF-UFSC-BR
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+%%%
+%%% Inherit definitions from existing themes (DO NOT MODIFY THESE)
+%%%
+
+
+\setbeamertemplate{navigation symbols}{} % disable the navigation toolbar
+
+\usepackage{textpos} % text positioning
+\usepackage{etoolbox} % enable nested if statements.
+
+\newlength\subtitwd
+\setlength\subtitwd{\paperwidth}
+
+\definecolor{bg1}{RGB}{128,141,149}
+\definecolor{txttp}{RGB}{117,129,139}
+\definecolor{slide}{RGB}{214,217,221}
+\definecolor{blockBg}{RGB}{194,197,201}
+
+%\setbeamercovered{transparent=30} % make transparency of paused items
+
+\setbeamerfont*{titlefont}{size*={14pt}{14pt}, family={\fontfamily{phv}}, series=\bfseries}
+\setbeamerfont*{authorfont}{size*={8pt}{14pt}, family={\fontfamily{phv}}, series=\bfseries}
+\setbeamerfont*{institutefont}{size*={7pt}{14pt}, family={\fontfamily{phv}}}
+\setbeamerfont*{frametitlefont}{size*={22pt}{22pt}, family={\fontfamily{phv}}, series=\bfseries}
+\setbeamerfont*{numberfont}{size*={10pt}{10pt}, family={\fontfamily{cmss}}}
+\setbeamerfont*{itemfont}{size*={12pt}{12pt}, family={\fontfamily{phv}}, series=\bfseries}
+\setbeamerfont*{lastfont}{size*={12pt}{12pt}, family={\fontfamily{phv}}}
+
+\renewcommand{\familydefault}{phv}
+\makeatletter
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Background Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{background canvas}{bg=bg1}
+\setbeamertemplate{background}{
+   \ifnumequal{\c@framenumber}{1}{
+    % First frame
+    \pgfdeclareimage[width=\paperwidth, height=\paperwidth]{imagemdefundo}{fig/ufsc_logo}
+    \pgfuseimage{imagemdefundo} 
+   }{
+   \ifnumequal{\c@framenumber}{\inserttotalframenumber}{
+      % Last frame
+      \pgfdeclareimage[width=\paperwidth, height=\paperwidth]{imagemdefundo}{fig/ufsc_logo}
+	  \pgfuseimage{imagemdefundo}
+      \color{bg1}\rule{\paperwidth}{\paperheight}
+      }{
+         % Other frames
+         \color{slide}\rule{\paperwidth}{\paperheight} 
+      }
+   }
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title Page Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{title page}{
+   \setbeamercolor{title}{bg=white,fg=txttp}
+   \vbox{
+      \hfill
+      \begin{beamercolorbox}[wd=\subtitwd,sep=10pt,right]{title}
+         {\usebeamerfont{titlefont}\usebeamercolor[fg]{title}\inserttitle\par}
+      \end{beamercolorbox}
+   }	
+      
+   \vskip-0.5em\par
+
+   \vbox{
+      \hfill
+      \begin{beamercolorbox}[wd=\subtitwd,sep=5pt,right]{title}
+         {\usebeamerfont{authorfont}\usebeamercolor[fg]{subtitle}\insertauthor\par}
+      \end{beamercolorbox}\hfill\null
+   }
+      
+   \vskip-0.5em\par
+
+   \vbox{
+      \hfill
+      \begin{beamercolorbox}[wd=\subtitwd,sep=3pt,right]{title}
+         {\usebeamerfont{institutefont}\usebeamercolor[fg]{subtitle}\insertinstitute\par}
+      \end{beamercolorbox}\hfill\null
+   }
+   \vfill
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Frametitle Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{frametitle}{
+   \ifnumequal{\c@framenumber}{\inserttotalframenumber}{
+   \vfill
+   \setbeamercolor{frametitle}{bg=white,fg=txttp}
+
+   % Last frame
+   \begin{beamercolorbox}[wd=\subtitwd,sep=-6pt,ht=7.15ex,dp=2ex,center]{frametitle}
+      {\usebeamerfont{lastfont}\usebeamercolor[fg]{frametitle}\insertframetitle}
+   \end{beamercolorbox}%\hfill%\null
+   }{
+   \setbeamercolor{frametitle}{fg=txttp}
+   \vbox{
+      \begin{columns}
+	     \begin{column}[T]{0.96\linewidth}
+            \begin{beamercolorbox}[wd=0.8\subtitwd,sep=5pt,left]{frametitle}
+	           {\usebeamerfont{frametitlefont}\usebeamercolor[fg]{frametitle}\insertframetitle}
+ 	        \end{beamercolorbox}
+         \end{column}
+
+	     \begin{column}[T]{1.1cm}
+	        \usebeamercolor[bg]{title}
+            % Replace the right figure here
+		    \pgfdeclareimage[width=1.3cm, height=1.3cm]{lrf}{fig/lrf_color}
+            % Comment the line below to hide the figure
+		    \pgfuseimage{lrf}	         	
+	     \end{column}	     
+      \end{columns}
+   }
+  }             
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Footline Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\defbeamertemplate*{footline}{foot_theme}{
+
+	\ifnumequal{\c@framenumber}{1}{}{
+	    \ifnumequal{\c@framenumber}{\inserttotalframenumber}{}{
+    			\setbeamercolor{footline}{bg=white,fg=txttp}
+			\leavevmode
+			\hbox{
+  				\begin{beamercolorbox}[wd=0.45\subtitwd,ht=6.25ex,dp=2ex,left]{footline}
+					% Replace the left figure here
+   					\pgfdeclareimage[width=2cm, height=0.6cm]{ceitec}{fig/ceitec}
+					% Comment the line below to hide the figure    					
+					\pgfuseimage{ceitec}
+				\end{beamercolorbox}
+
+				\hskip-2.0pt % adjust the gap between left figure and slide number
+		
+				\begin{beamercolorbox}[wd=0.1\subtitwd,ht=6.25ex,dp=2ex,center]{footline}
+					\usebeamerfont{numberfont}
+			    		\insertpagenumber{}
+				\end{beamercolorbox}
+			    
+			    \hskip-2.0pt % adjust the gap between right figure and slide number
+		
+				\begin{beamercolorbox}[wd=0.45\subtitwd,ht=6.25ex,dp=2ex,right]{footline}
+					% Replace the right figure here
+   					\pgfdeclareimage[width=4cm, height=0.6cm]{ufsc}{fig/ufsc_foot}
+					% Comment the line below to hide the figure
+					\pgfuseimage{ufsc}
+				\end{beamercolorbox}%
+			}
+		}	
+	}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bullets Configuration %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{itemize item}{fg=black}
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[square]
+\setbeamercolor{itemize subitem}{fg=black}
+\setbeamercolor{item}{fg=black} % set the item enumerate color 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Color Blocks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block title}{fg=slide,bg=txttp}
+\setbeamercolor{block body}{bg=blockBg}
+
+\makeatother
