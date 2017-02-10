@@ -11,6 +11,11 @@ O arquivo `ufsc_templ.sty` define o estilo da apresentação.
 
 ## Como usar?
 
+Pode-se executar no terminal para gerar o pdf, ler o pdf e limpar os arquivos log, como abaixo:
+
+`$ make && make read && make clean`
+
+
 Edite o `ufsc_templ.tex` e adicione um frame como no exemplo abaixo:
 ```
 \begin{frame}

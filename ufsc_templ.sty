@@ -135,23 +135,17 @@
 	    \ifnumequal{\c@framenumber}{\inserttotalframenumber}{}{
     			\setbeamercolor{footline}{bg=white,fg=txttp}
 			\leavevmode
-			\hbox{
+			\hbox{%
   				\begin{beamercolorbox}[wd=0.45\subtitwd,ht=6.25ex,dp=2ex,left]{footline}
 					% Replace the left figure here
    					\pgfdeclareimage[width=2cm, height=0.6cm]{ceitec}{fig/ceitec}
 					% Comment the line below to hide the figure    					
 					\pgfuseimage{ceitec}
-				\end{beamercolorbox}
-
-				\hskip-2.0pt % adjust the gap between left figure and slide number
-		
+				\end{beamercolorbox}%
 				\begin{beamercolorbox}[wd=0.1\subtitwd,ht=6.25ex,dp=2ex,center]{footline}
 					\usebeamerfont{numberfont}
 			    		\insertpagenumber{}
-				\end{beamercolorbox}
-			    
-			    \hskip-2.0pt % adjust the gap between right figure and slide number
-		
+				\end{beamercolorbox}%		
 				\begin{beamercolorbox}[wd=0.45\subtitwd,ht=6.25ex,dp=2ex,right]{footline}
 					% Replace the right figure here
    					\pgfdeclareimage[width=4cm, height=0.6cm]{ufsc}{fig/ufsc_foot}
