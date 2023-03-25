@@ -5,13 +5,13 @@ O objetivo deste modelo é padronizar um formato rápido de suporte para trabalh
 ---
 ##Estrutura
 
-O arquivo `ufsc_templ.tex` é o local onde deve ser editado a apresentação.
+O arquivo `ufsc_templ.tex` é o local onde deve ser editada a apresentação.
 O arquivo `ufsc_templ.sty` define o estilo da apresentação. 
 > **Obs.:** Recomenda-se editar o arquivo `ufsc_templ.sty` somente se necessário.
 
 ## Como usar?
 
-Pode-se executar no terminal para gerar o pdf, ler o pdf e limpar os arquivos log, como abaixo:
+Pode-se executa-lo no terminal para gerar o pdf, ler o pdf e limpar os arquivos log, como abaixo:
 
 `$ make && make read && make clean`
 
